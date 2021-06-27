@@ -1,4 +1,10 @@
 {
-    "mode": "file",
-    "out": "reference-docs"
+    "entryPoints": [ "src/v1/index.ts" ],
+    "out": "reference-docs",
+    "categorizeByGroup": true,
+    "externalPattern": [
+        "**/_fixtures/**",
+        "**/*.spec.*"
+    ],
+    "excludeInternal": true
 }
