@@ -1,4 +1,4 @@
-# Welcome To @safelytyped/object-requirements!
+# Welcome To @safelytyped/data-requirements!
 
 ## Introduction
 
@@ -8,12 +8,12 @@ ADD YOUR INTRODUCTION HERE!!
 
 ```
 # run this from your Terminal
-npm install @safelytyped/object-requirements
+npm install @safelytyped/data-requirements
 ```
 
 ```typescript
 // add this import to your Typescript code
-import { Value } from "@safelytyped/object-requirements"
+import { Value } from "@safelytyped/data-requirements"
 ```
 
 __VS Code users:__ once you've added a single import anywhere in your project, you'll then be able to auto-import anything else that this library exports.
