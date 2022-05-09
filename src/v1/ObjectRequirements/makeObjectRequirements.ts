@@ -36,14 +36,6 @@ import { applyFunctionalOptions, FunctionalOption, SmartConstructorOptions, THRO
 import { ObjectRequirements } from "./ObjectRequirements";
 import { ObjectRequirementsData } from "./ObjectRequirementsData";
 
-type SmartConstructor<IN, OUT, OPT extends SmartConstructorOptions = SmartConstructorOptions, FN = OUT, FN_OPT extends SmartConstructorOptions = OPT> = (
-    input: IN,
-    options?: Partial<OPT>,
-    ...fnOptions: FunctionalOption<FN, Partial<FN_OPT>>[]
-) => OUT;
-
-type makeObjectRequirementsFn<T extends object = object> = SmartConstructor<ObjectRequirementsData<T>, ObjectRequirements<T>>;
-
 /**
  * `makeObjectRequirements()` is a {@link SmartConstructor}.
  *
@@ -58,17 +50,18 @@ type makeObjectRequirementsFn<T extends object = object> = SmartConstructor<Obje
  * @param fnOpts
  * Functional options to call after the requirements have been made.
  * @returns
+ * an {@link ObjectRequirements} object, that you can use to validate
+ * any given anonymous object
  */
-export const makeObjectRequirements: makeObjectRequirementsFn
-= (
-    input: ObjectRequirementsData,
+export function makeObjectRequirements<T extends object = object>(
+    input: ObjectRequirementsData<T>,
     {
         onError = THROW_THE_ERROR
     }: Partial<SmartConstructorOptions> = {},
-    ...fnOpts: FunctionalOption<ObjectRequirements>[]
-): ObjectRequirements => {
+    ...fnOpts: FunctionalOption<ObjectRequirements<T>>[]
+): ObjectRequirements<T> {
     return applyFunctionalOptions(
-        new ObjectRequirements(input),
+        new ObjectRequirements<T>(input),
         { onError },
         ...fnOpts
     );
