@@ -33,7 +33,9 @@
 //
 import {
     AppError,
+    DataPath,
     DEFAULT_DATA_PATH,
+    HashMap,
     validateNumber,
     validateString
 } from "@safelytyped/core-types";
@@ -45,6 +47,36 @@ import { validateOptionalObjectProperties } from "./validateOptionalObjectProper
 
 
 describe("validateOptionalObjectProperties()", () => {
+    it("calls all supplied validators if they all pass", () => {
+        const unit = {
+            foo: "bar",
+            fish: "trout",
+            alfred: true,
+        }
+
+        const expectedValue = {
+            foo: true,
+            fish: true,
+            alfred: true,
+        }
+
+        const actualValue: HashMap<boolean> = {};
+
+        const validateCalled = (key: string) => (path: DataPath, x: unknown) => { actualValue[key] = true; };
+        const reqs = new ObjectRequirements({
+            optionalProperties: {
+                foo: validateCalled('foo'),
+                fish: validateCalled('fish'),
+                alfred: validateCalled('alfred'),
+            }
+        });
+        const desc = makeObjectDescription(reqs, unit);
+
+        validateOptionalObjectProperties(reqs, desc, DEFAULT_DATA_PATH, unit);
+
+        expect(actualValue).to.eql(expectedValue);
+    });
+
     it("returns `input` if all optional properties pass validation", () => {
         const unit = {
             foo: 100,

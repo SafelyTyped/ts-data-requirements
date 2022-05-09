@@ -25,6 +25,7 @@ The following changes have been completed, and will be included in the next tagg
 
 - `makeObjectRequirements()` now passes the generic type needed for ObjectRequirements.validate() to return the correct type
 - `validateRequiredObjectProperties()` (and therefore ObjectRequirements.validate()) now checks every required property (as long as the validators keep passing)
+- `validateOptionalObjectProperties()` (and therefore ObjectRequirements.validate()) now checks every optional property (as long as the validators keep passing)
 
 ## v0.0.1
 
