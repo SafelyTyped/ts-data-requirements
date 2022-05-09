@@ -21,6 +21,10 @@ For each release, changes are grouped under these headings:
 
 The following changes have been completed, and will be included in the next tagged release.
 
+## v0.0.2
+
+Released Monday, 9th May 2022.
+
 ### Fixes
 
 - `makeObjectRequirements()` now passes the generic type needed for ObjectRequirements.validate() to return the correct type
