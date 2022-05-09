@@ -2,7 +2,9 @@
 
 ## Introduction
 
-ADD YOUR INTRODUCTION HERE!!
+Data Requirements is a Typescript library. Use it to build type validators for anonymous objects in your libraries.
+
+At the moment, this is very much an experimental library. I'm expecting it to change a lot before the v1.0 release.
 
 ## Quick Start
 
@@ -10,13 +12,6 @@ ADD YOUR INTRODUCTION HERE!!
 # run this from your Terminal
 npm install @safelytyped/data-requirements
 ```
-
-```typescript
-// add this import to your Typescript code
-import { Value } from "@safelytyped/data-requirements"
-```
-
-__VS Code users:__ once you've added a single import anywhere in your project, you'll then be able to auto-import anything else that this library exports.
 
 ## Documentation
 
