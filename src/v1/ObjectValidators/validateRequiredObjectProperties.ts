@@ -74,7 +74,7 @@ export function validateRequiredObjectProperties<T extends object = object>(
             retval = res;
         }
 
-        return (res instanceof AppError);
+        return (!(res instanceof AppError));
     });
 
     // all done

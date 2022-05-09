@@ -65,7 +65,7 @@ export function validateOptionalObjectProperties<T extends object = object>(
             retval = res;
         }
 
-        return (res instanceof AppError);
+        return !(res instanceof AppError);
     });
 
     // all done

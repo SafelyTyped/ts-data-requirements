@@ -1,6 +1,6 @@
 {
   "name": "@safelytyped/data-requirements",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library for validating any data structures.",
   "repository": "github:SafelyTyped/ts-data-requirements",
   "main": "lib/v1/index.js",
