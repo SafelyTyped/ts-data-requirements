@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-present Ganbaro Digital Ltd
+// Copyright (c) 2021-present Ganbaro Digital Ltd
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -32,28 +32,10 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-import { ObjectPropertyValidators } from "../ObjectPropertyValidators";
-import { ObjectValidator } from "../ObjectValidator/ObjectValidator";
+import { HashMap, AnyTypeValidator } from "@safelytyped/core-types";
 
-export interface ObjectRequirementsDataWithRequiredProperties<T extends object = object> {
-    requiredProperties: ObjectPropertyValidators,
-    optionalProperties?: ObjectPropertyValidators,
-    additionalValidators?: ObjectValidator<T>[],
-}
-
-export interface ObjectRequirementsDataWithOptionalProperties<T extends object = object> {
-    requiredProperties?: ObjectPropertyValidators,
-    optionalProperties: ObjectPropertyValidators,
-    additionalValidators?: ObjectValidator<T>[],
-}
-
-export interface ObjectRequirementsDataWithAdditionalValidators<T extends object = object> {
-    requiredProperties?: ObjectPropertyValidators,
-    optionalProperties?: ObjectPropertyValidators,
-    additionalValidators: ObjectValidator<T>[],
-}
-
-export type ObjectRequirementsData<T extends object = object> =
-    ObjectRequirementsDataWithRequiredProperties<T>
-    | ObjectRequirementsDataWithOptionalProperties<T>
-    | ObjectRequirementsDataWithAdditionalValidators<T>;
+/**
+ * `ObjectPropertyValidators` is a set of type validators used to
+ * validate any given property on an object.
+ */
+export type ObjectPropertyValidators = HashMap<AnyTypeValidator>;

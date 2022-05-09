@@ -34,10 +34,11 @@
 
 import { AppErrorOr, DataPath, validate, validateObject } from "@safelytyped/core-types";
 import { makeObjectDescription, ObjectDescription } from "../ObjectDescription";
+import { ObjectPropertyValidators } from "../ObjectPropertyValidators";
 import { applyObjectValidators } from "../ObjectValidator";
 import { ObjectValidator } from "../ObjectValidator/ObjectValidator";
 import { validateOptionalObjectProperties, validateRequiredObjectProperties } from "../ObjectValidators";
-import { ObjectPropertyValidators, ObjectRequirementsData } from "./ObjectRequirementsData";
+import { ObjectRequirementsData } from "./ObjectRequirementsData";
 
 
 export class ObjectRequirements<T extends object = object> {
