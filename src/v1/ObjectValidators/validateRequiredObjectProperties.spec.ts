@@ -33,7 +33,9 @@
 //
 import {
     AppError,
+    DataPath,
     DEFAULT_DATA_PATH,
+    HashMap,
     validateBoolean,
     validateString,
 } from "@safelytyped/core-types";
@@ -45,6 +47,36 @@ import { ObjectRequirements } from "../ObjectRequirements";
 import { validateRequiredObjectProperties } from "./validateRequiredObjectProperties";
 
 describe("validateRequiredObjectProperties()", () => {
+    it("calls all supplied validators if they all pass", () => {
+        const unit = {
+            foo: "bar",
+            fish: "trout",
+            alfred: true,
+        }
+
+        const expectedValue = {
+            foo: true,
+            fish: true,
+            alfred: true,
+        }
+
+        const actualValue: HashMap<boolean> = {};
+
+        const validateCalled = (key: string) => (path: DataPath, x: unknown) => { actualValue[key] = true; };
+        const reqs = new ObjectRequirements({
+            requiredProperties: {
+                foo: validateCalled('foo'),
+                fish: validateCalled('fish'),
+                alfred: validateCalled('alfred'),
+            }
+        });
+        const desc = makeObjectDescription(reqs, unit);
+
+        validateRequiredObjectProperties(reqs, desc, DEFAULT_DATA_PATH, unit);
+
+        expect(actualValue).to.eql(expectedValue);
+    });
+
     it("returns `input` if all required properties are present", () => {
         const unit = {
             foo: "bar",
