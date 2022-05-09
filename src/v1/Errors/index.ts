@@ -31,3 +31,5 @@
 //
 
 export * from "./defaults/MODULE_NAME";
+export * from "./ObjectPropertiesNotFound";
+export * from "./UnsupportedObjectProperties";
