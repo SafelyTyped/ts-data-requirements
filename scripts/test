@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+function die() {
+    echo "*** error" "$*"
+    exit 1
+}
+
+npm run build || die "unable to build the code cleanly"
+
+TESTSUITE="**"
+if [[ -n $1 ]] ; then
+    TESTSUITE="**/$1"
+fi
+
+mocha -r ts-node/register \"src/$TESTSUITE/*.spec.ts\"
